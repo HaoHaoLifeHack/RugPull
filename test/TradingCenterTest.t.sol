@@ -85,15 +85,14 @@ contract TradingCenterTest is Test {
   }
 
   function testRugPull() public {
-
     // TODO: 
     // Let's pretend that you are proxy owner
     vm.startPrank(owner);
     // Try to upgrade the proxy to TradingCenterV2
     proxy.upgradeTo(address(tradingCenterV2));
     // And empty users' usdc and usdt
-    TradingCenterV2(address(proxy)).RugPull(user1,owner);
-    TradingCenterV2(address(proxy)).RugPull(user2,owner);
+    TradingCenterV2(address(proxy)).rugPull(user1,owner);
+    TradingCenterV2(address(proxy)).rugPull(user2,owner);
     // Assert users's balances are 0
     assertEq(usdt.balanceOf(user1), 0);
     assertEq(usdc.balanceOf(user1), 0);
