@@ -32,7 +32,7 @@ contract UpgradeableProxy is Proxy, Ownable {
   function upgradeToAndCall(address _implementation, bytes calldata _data) external{
     _setImpl(_implementation);
     (bool success, ) = _implementation.delegatecall(_data);
-    require(success, "init failed");
+    require(success, "delegateCall failed");
   }
 
   fallback() external payable {
